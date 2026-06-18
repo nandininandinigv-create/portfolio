@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nandini Portfolio</title>
+
+  <!-- Google Font -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+  <!-- AOS Animation -->
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    h2 {
+      font-weight: 300;
+      color: #38bdf8;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: #38bdf8;
+      color: black;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: white;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div class="hero">
+  <h1 data-aos="fade-up">Hi, I'm Nandini 👋</h1>
+  <h2 data-aos="fade-up" data-aos-delay="200">
+    Aspiring Software Developer | ML Enthusiast
+  </h2>
+  <p data-aos="fade-up" data-aos-delay="400">
+    Developer + ML Projects Portfolio
+  </p>
+
+  <button class="btn" onclick="document.querySelector('.projects').scrollIntoView({ behavior: 'smooth' });">
+  View My Work
+</button>
+
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  AOS.init();
+</script>
+
+</body>
+
+<!-- SKILLS SECTION -->
+
+<section class="skills">
+  <h1 data-aos="fade-up">My Skills</h1>
+
+  <div class="skill" data-aos="fade-up" data-aos-delay="200">
+    <p>Python</p>
+    <div class="bar">
+      <div class="fill" style="width: 90%"></div>
+    </div>
+  </div>
+
+  <div class="skill" data-aos="fade-up" data-aos-delay="300">
+    <p>Machine Learning</p>
+    <div class="bar">
+      <div class="fill" style="width: 85%"></div>
+    </div>
+  </div>
+
+  <div class="skill" data-aos="fade-up" data-aos-delay="400">
+    <p>HTML & CSS</p>
+    <div class="bar">
+      <div class="fill" style="width: 80%"></div>
+    </div>
+  </div>
+
+  <div class="skill" data-aos="fade-up" data-aos-delay="500">
+    <p>Java</p>
+    <div class="bar">
+      <div class="fill" style="width: 70%"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+.skills {
+  padding: 80px 20px;
+  background: #020617;
+  text-align: center;
+}
+
+.skill {
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.bar {
+  background: #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 10px;
+  background: #38bdf8;
+  width: 0;
+  animation: fillBar 2s forwards;
+}
+
+@keyframes fillBar {
+  from { width: 0; }
+}
+</style>
+<!-- CONTACT SECTION -->
+
+<section class="contact">
+  <h1 data-aos="fade-up">Contact Me</h1>
+
+  <p data-aos="fade-up" data-aos-delay="200">
+    Feel free to reach out for opportunities or collaborations!
+  </p>
+
+  <div data-aos="fade-up" data-aos-delay="300">
+    <p>Email: nandininandinigv@gmail.com</p>
+    <p>LinkedIn: linkedin.com/in/yourprofile</p>
+  </div>
+</section>
+
+<style>
+.contact {
+  padding: 80px 20px;
+  background: #0f172a;
+  text-align: center;
+}
+</style>
+</html>
+
+
