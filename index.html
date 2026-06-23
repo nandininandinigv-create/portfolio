@@ -18,6 +18,14 @@
 
 ```
 <style>
+    #typing::after {
+    content: "|";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
     .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -63,6 +71,8 @@
         margin: auto;
     }
 
+    <h1 id="typing"></h1>
+    
     h2 {
         color: #a78bfa;
         margin-bottom: 10px;
@@ -161,6 +171,21 @@
 </div>
 </section>
 
+      <script>
+const text = "Hi, I'm Nandini 👋";
+let index = 0;
+
+function typeEffect() {
+    if (index < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 100);
+    }
+}
+
+typeEffect();
+</script>
+    
 <footer>
     <p>© 2026 Nandini</p>
 </footer>
