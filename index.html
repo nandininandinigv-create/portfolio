@@ -35,11 +35,12 @@ section {
     padding: 15px;
     border-radius: 10px;
     margin-top: 10px;
+    transition: 0.3s;
 }
 
-a {
-    color: #60a5fa;
-    text-decoration: none;
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 </style>
 </head>
@@ -55,6 +56,13 @@ a {
     <a href="Nandini_GV_Resume.pdf" download 
        style="padding:10px 20px; background:#60a5fa; color:white; border-radius:5px;">
        Download Resume
+    </a>
+</div>
+
+    <div style="text-align:center; margin-top:10px;">
+    <a href="https://github.com/nandininandinigv" target="_blank"
+       style="padding:10px 20px; background:#111827; color:white; border-radius:5px;">
+       View GitHub
     </a>
 </div>
 
@@ -75,10 +83,11 @@ a {
 
 <section>
     <h2>Projects</h2>
-    <div class="project-card">
-        <h3>Heart Disease Risk Prediction</h3>
-        <p>ML model to predict heart disease risk.</p>
-    </div>
+<div class="project-card">
+    <img src="project1.png" width="100%" style="border-radius:10px;">
+    <h3>Heart Disease Risk Prediction</h3>
+    <p>ML model to predict heart disease risk.</p>
+</div>
 </section>
 
 <section>
