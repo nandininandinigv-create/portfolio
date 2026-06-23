@@ -12,6 +12,7 @@
 
 
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nandini Portfolio</title>
@@ -110,7 +111,25 @@
 <body>
 
 <header>
-    <h1>Hi, I'm Nandini 👋</h1>
+    <h1 id="typing"></h1>
+
+<script>
+window.onload = function() {
+    const text = "Hi, I'm Nandini 👋";
+    let index = 0;
+
+    function typeEffect() {
+        if (index < text.length) {
+            document.getElementById("typing").innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeEffect, 100);
+        }
+    }
+
+    typeEffect();
+};
+</script>
+
     <p>Aspiring Software Developer | Machine Learning Enthusiast</p>
 </header>
 
