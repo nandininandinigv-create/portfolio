@@ -1,207 +1,97 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<div style="text-align: center; margin-top: 20px;">
-    <img src="updatedphoto.jpeg" alt="Profile Photo" width="180" style="border-radius: 50%;">
-</div>
-
-<a href="Nandini_GV_Resume.pdf" download class="btn">Download Resume</a>
-    
-  <button style="margin-top:15px; padding:10px 20px; background:#60a5fa; border:none; border-radius:5px; cursor:pointer;">
-  </button>...
-
 
 <head>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nandini Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nandini Portfolio</title>
 
-```
 <style>
-    #typing::after {
-    content: "|";
-    animation: blink 1s infinite;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
 }
 
-@keyframes blink {
-    50% { opacity: 0; }
-}
-    .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 1s ease-in forwards;
+header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+h2 {
+    color: #a78bfa;
 }
-    <div class="fade-in">
-    <h2>About Me</h2>
-    <p>I am a passionate developer...</p>
-</div>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #0f172a;
-        color: white;
-    }
 
-    header {
-        text-align: center;
-        padding: 60px 20px;
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    }
+section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+}
 
-    header h1 {
-        font-size: 40px;
-        margin: 0;
-    }
-
-    header p {
-        font-size: 18px;
-        margin-top: 10px;
-    }
-
-    section {
-        padding: 40px 20px;
-        max-width: 900px;
-        margin: auto;
-    }
-
-    <h1 id="typing"></h1>
-    
-    h2 {
-        color: #a78bfa;
-        margin-bottom: 10px;
-    }
-
- .project-card {
+.project-card {
     background: #1e293b;
     padding: 15px;
     border-radius: 10px;
     margin-top: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+a {
+    color: #60a5fa;
+    text-decoration: none;
 }
-
-    footer {
-        text-align: center;
-        padding: 20px;
-        background: #020617;
-        margin-top: 30px;
-    }
-
-    a {
-        color: #60a5fa;
-        text-decoration: none;
-    }
 </style>
-```
-
 </head>
 
 <body>
 
+<!-- Profile -->
 <div style="text-align: center; margin-top: 20px;">
-    <img src="updatedphoto.jpeg" alt="Profile Photo" width="180" style="border-radius: 50%;">
+    <img src="updatedphoto.jpeg" width="180" style="border-radius: 50%;">
 </div>
 
 <div style="text-align:center; margin-top:15px;">
     <a href="Nandini_GV_Resume.pdf" download 
-       style="padding:10px 20px; background:#60a5fa; color:white; border-radius:5px; text-decoration:none;">
+       style="padding:10px 20px; background:#60a5fa; color:white; border-radius:5px;">
        Download Resume
     </a>
 </div>
 
 <header>
     <h1 id="typing"></h1>
-
-<script>
-window.onload = function() {
-    const text = "Hi, I'm Nandini 👋";
-    let index = 0;
-
-    function typeEffect() {
-        if (index < text.length) {
-            document.getElementById("typing").innerHTML += text.charAt(index);
-            index++;
-            setTimeout(typeEffect, 100);
-        }
-    }
-
-    typeEffect();
-};
-</script>
-
     <p>Aspiring Software Developer | Machine Learning Enthusiast</p>
 </header>
 
 <section>
     <h2>About Me</h2>
-    <div class="card">
-        <p>
-            I am a BCA student passionate about software development and machine learning.
-            I enjoy building projects and learning new technologies.
-        </p>
-    </div>
+    <p>I am a BCA student passionate about software development and machine learning.</p>
 </section>
 
 <section>
     <h2>Skills</h2>
-    <div class="card">
-        <p>HTML, CSS, Java, Python, Machine Learning</p>
-    </div>
+    <p>HTML, CSS, Java, Python, Machine Learning</p>
 </section>
 
 <section>
     <h2>Projects</h2>
-    <div class="card">
-        <h3>Heart Disease Prediction</h3>
-        <p>Built a machine learning model to predict heart disease risk using medical data.</p>
+    <div class="project-card">
+        <h3>Heart Disease Risk Prediction</h3>
+        <p>ML model to predict heart disease risk.</p>
     </div>
 </section>
 
-
-    <section id="projects">
-  <h2>Projects</h2>
-
-  <div class="project-card">
-    <h3>Heart Disease Risk Prediction</h3>
-    <p>Built a machine learning model to predict heart disease risk using patient data.</p>
-    <p><b>Tech:</b> Python, Machine Learning</p>
-  </div>
-
+<section>
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:nandininandinigv@gmail.com">nandininandinigv@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/nandini-nandini-gv-201860367" target="_blank">View Profile</a></p>
 </section>
 
-  <h2>Contact Me</h2>
+<footer>
+    <p>© 2026 Nandini</p>
+</footer>
 
-  <p>
-    📩 Email: 
-    <a href="mailto:nandininandinigv@gmail.com">
-      nandininandinigv@gmail.com
-    </a>
-  </p>
-
-  <p>
-    🔗 LinkedIn: 
-    <a href="https://www.linkedin.com/in/nandini-nandini-gv-201860367" target="_blank">
-      View Profile
-    </a>
-  </p>
-
-  
-</div>
-</section>
-
-      <script>
+<script>
 const text = "Hi, I'm Nandini 👋";
 let index = 0;
 
@@ -215,10 +105,6 @@ function typeEffect() {
 
 typeEffect();
 </script>
-    
-<footer>
-    <p>© 2026 Nandini</p>
-</footer>
 
 </body>
 </html>
