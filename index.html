@@ -1,19 +1,343 @@
+Here's the full code — copy everything below and paste it as `index.html` in your GitHub repo:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nandini Portfolio</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: #e2e8f0;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nandini G V — Software Developer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Mono&display=swap');
+
+  :root{
+    --bg: #0f1024;
+    --bg2: #161837;
+    --glass: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.14);
+    --ink: #f3f2ff;
+    --ink-soft: #b9b8d6;
+    --violet: #8b5cf6;
+    --cyan: #4fd6d0;
+    --pink: #ff6fb0;
+    --amber: #ffc857;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Sora', sans-serif;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  a{ color: inherit; }
+  .wrap{ max-width: 800px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+
+  /* ---- ambient aurora background ---- */
+  .aurora{ position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+  .blob{
+    position: absolute; border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.55;
+  }
+  .blob.b1{ width: 420px; height: 420px; background: var(--violet); top: -120px; left: -100px; animation: drift1 16s ease-in-out infinite; }
+  .blob.b2{ width: 380px; height: 380px; background: var(--cyan); top: 20%; right: -140px; animation: drift2 20s ease-in-out infinite; }
+  .blob.b3{ width: 320px; height: 320px; background: var(--pink); bottom: -100px; left: 20%; animation: drift3 18s ease-in-out infinite; }
+  @keyframes drift1{ 0%,100%{ transform: translate(0,0); } 50%{ transform: translate(60px, 40px); } }
+  @keyframes drift2{ 0%,100%{ transform: translate(0,0); } 50%{ transform: translate(-50px, 60px); } }
+  @keyframes drift3{ 0%,100%{ transform: translate(0,0); } 50%{ transform: translate(40px, -50px); } }
+  @media (prefers-reduced-motion: reduce){ .blob{ animation: none; } }
+
+  /* ---- glass surface ---- */
+  .glass{
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+  .glass:hover{
+    border-color: rgba(255,255,255,0.28);
+    background: rgba(255,255,255,0.09);
+  }
+
+  /* ---- nav ---- */
+  nav{ position: sticky; top: 0; z-index: 5; padding: 1rem 0; }
+  nav .navbar{
+    display:flex; gap:1.3rem; padding: 0.7rem 1.4rem;
+    justify-content: center; flex-wrap:wrap;
+  }
+  nav a{
+    font-weight: 600; font-size: 0.88rem; text-decoration:none; color: var(--ink-soft);
+    transition: color 0.2s ease;
+  }
+  nav a:hover{ color: var(--cyan); }
+
+  /* ---- hero ---- */
+  header.hero{ padding: 4rem 0 3rem; text-align:center; }
+  .hero-card{ padding: 3rem 2rem; }
+  .hero-photo{
+    width: 120px; height:120px; object-fit:cover; border-radius: 50%;
+    border: 2px solid var(--glass-border);
+    margin-bottom: 1.4rem;
+    box-shadow: 0 0 40px rgba(139,92,246,0.4);
+  }
+  .hero-card h1{
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+    background: linear-gradient(90deg, var(--cyan), var(--violet), var(--pink));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 6s linear infinite;
+  }
+  @keyframes shine{ to{ background-position: 200% center; } }
+  .hero-card .role{ color: var(--ink-soft); font-size: 1.05rem; margin: 0 0 2rem; }
+
+  .hero-links{ display:flex; gap: 0.9rem; flex-wrap: wrap; justify-content:center; }
+  .btn{
+    display:inline-block;
+    padding: 0.75rem 1.4rem;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    border: 1px solid var(--glass-border);
+    color: var(--ink) !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .btn:hover{ transform: translateY(-3px); box-shadow: 0 8px 24px rgba(139,92,246,0.35); border-color: var(--violet); }
+  .btn.solid{ background: linear-gradient(90deg, var(--violet), var(--pink)); border: none; }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+  /* ---- reveal on scroll ---- */
+  .reveal{ opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.is-visible{ opacity: 1; transform: translateY(0); }
+
+  /* ---- sections ---- */
+  section{ padding: 3rem 0; scroll-margin-top: 5rem; }
+  h2{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1.4rem;
+    letter-spacing: -0.01em;
+  }
+  h2 span{
+    background: linear-gradient(90deg, var(--cyan), var(--violet));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .about-card, .edu-item, .cert-chip{ padding: 1.8rem 2rem; }
+  .about-card p{ margin:0; color: var(--ink-soft); max-width: 62ch; font-size: 1.02rem; }
+
+  /* ---- skills chart ---- */
+  .chart{ display:flex; flex-direction:column; gap: 1.1rem; padding: 1.8rem 2rem; }
+  .chart-row{ display:grid; grid-template-columns: 130px 1fr 48px; align-items:center; gap: 1rem; }
+  .chart-row .label{ font-weight: 600; font-size: 0.94rem; }
+  .chart-track{ height: 10px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow:hidden; }
+  .chart-fill{ height: 100%; width: 0; border-radius: 999px; transition: width 1.2s ease-out; }
+  .chart-row .pct{ font-family:'Space Mono', monospace; font-size:0.82rem; color: var(--ink-soft); text-align:right; }
+
+  /* ---- education ---- */
+  .edu-item{ margin-bottom: 1rem; }
+  .edu-item h3{ margin:0 0 0.2rem; font-size: 1.05rem; font-weight:700; }
+  .edu-item .meta{ font-family:'Space Mono', monospace; font-size:0.8rem; color: var(--cyan); margin-bottom:0.5rem; }
+  .edu-item p{ margin:0; color: var(--ink-soft); font-size:0.95rem; }
+
+  /* ---- projects ---- */
+  .project-card{ overflow: hidden; display:grid; grid-template-columns: 220px 1fr; margin-bottom: 1.3rem; }
+  .project-card:last-child{ margin-bottom:0; }
+  .project-card img{ width:100%; height:100%; object-fit: cover; display:block; min-height: 160px; }
+  .project-body{ padding: 1.6rem 1.8rem; }
+  .project-body h3{ font-size: 1.15rem; font-weight: 700; margin: 0 0 0.5rem; }
+  .project-body p{ margin: 0 0 1rem; color: var(--ink-soft); font-size: 0.96rem; }
+  .project-tags{ display:flex; gap:0.5rem; flex-wrap:wrap; }
+  .project-tags span{
+    font-family:'Space Mono', monospace; font-size: 0.74rem;
+    background: rgba(79,214,208,0.14); color: var(--cyan);
+    padding: 0.22rem 0.6rem; border-radius: 999px;
+    border: 1px solid rgba(79,214,208,0.3);
+  }
+
+  @media (max-width: 560px){
+    .project-card{ grid-template-columns: 1fr; }
+    .project-card img{ min-height: 170px; }
+    .chart-row{ grid-template-columns: 92px 1fr 40px; gap:0.6rem; }
+  }
+
+  .contact-list{ list-style:none; padding: 1.8rem 2rem; margin:0; display:flex; flex-direction:column; gap: 0.9rem; }
+  .contact-list li a{ font-weight: 600; font-size: 1rem; text-decoration:none; color: var(--ink); }
+  .contact-list li a:hover{ color: var(--cyan); }
+
+  footer{ text-align:center; padding: 2.5rem 0 3rem; font-size: 0.82rem; color: var(--ink-soft); }
+  .placeholder-note{ font-size:0.8rem; color: #8886b0; font-style:italic; margin-top:0.6rem; padding: 0 2rem 1.4rem; }
+</style>
 </head>
 <body>
-    <h1>Welcome to Nandini's Portfolio</h1>
+
+<div class="aurora">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+</div>
+
+<nav>
+  <div class="wrap navbar glass" style="border-radius:999px; display:inline-flex; margin:0 auto; width:fit-content;">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-card glass">
+      <img class="hero-photo" src="https://nandininandinigv-create.github.io/portfolio/updatedphoto.jpeg" alt="Photo of Nandini G V">
+      <h1>Nandini G V</h1>
+      <p class="role">Aspiring Software Developer — Machine Learning Enthusiast</p>
+      <div class="hero-links">
+        <a class="btn solid" href="https://nandininandinigv-create.github.io/portfolio/Nandini_GV_Resume.pdf">Download résumé</a>
+        <a class="btn" href="https://github.com/nandininandinigv">View GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/nandini-nandini-gv-201860367">Connect on LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="reveal" id="about">
+    <h2><span>About</span></h2>
+    <div class="about-card glass">
+      <p>I'm a BCA student building a foundation in software development and machine learning. I like turning data into something useful — models that predict, tools that simplify, and code that holds up.</p>
+    </div>
+  </section>
+
+  <section class="reveal" id="skills">
+    <h2><span>Skills</span></h2>
+    <div class="chart glass">
+      <div class="chart-row">
+        <span class="label">Python</span>
+        <div class="chart-track"><div class="chart-fill" data-width="85%" style="background:linear-gradient(90deg,var(--cyan),var(--violet));"></div></div>
+        <span class="pct">85%</span>
+      </div>
+      <div class="chart-row">
+        <span class="label">Machine Learning</span>
+        <div class="chart-track"><div class="chart-fill" data-width="75%" style="background:linear-gradient(90deg,var(--pink),var(--violet));"></div></div>
+        <span class="pct">75%</span>
+      </div>
+      <div class="chart-row">
+        <span class="label">Java</span>
+        <div class="chart-track"><div class="chart-fill" data-width="65%" style="background:linear-gradient(90deg,var(--amber),var(--pink));"></div></div>
+        <span class="pct">65%</span>
+      </div>
+      <div class="chart-row">
+        <span class="label">HTML</span>
+        <div class="chart-track"><div class="chart-fill" data-width="80%" style="background:linear-gradient(90deg,var(--cyan),var(--amber));"></div></div>
+        <span class="pct">80%</span>
+      </div>
+      <div class="chart-row">
+        <span class="label">CSS</span>
+        <div class="chart-track"><div class="chart-fill" data-width="78%" style="background:linear-gradient(90deg,var(--violet),var(--cyan));"></div></div>
+        <span class="pct">78%</span>
+      </div>
+    </div>
+    <p class="placeholder-note">Percentages are placeholders — adjust "data-width" and the number in each row to match your actual comfort level.</p>
+  </section>
+
+  <section class="reveal" id="education">
+    <h2><span>Education</span></h2>
+    <div class="edu-item glass">
+      <h3>Bachelor of Computer Applications (BCA)</h3>
+      <div class="meta">[Your College Name] · [Start Year]–[End Year]</div>
+      <p>[Add a line about relevant coursework, achievements, or focus areas.]</p>
+    </div>
+    <div class="edu-item glass">
+      <h3>[Pre-University / High School Name]</h3>
+      <div class="meta">[Board/Stream] · [Start Year]–[End Year]</div>
+      <p>[Add a line about relevant achievements, if any.]</p>
+    </div>
+  </section>
+
+  <section class="reveal" id="projects">
+    <h2><span>Projects</span></h2>
+
+    <div class="project-card glass">
+      <img src="https://nandininandinigv-create.github.io/portfolio/project1.png" alt="Heart Disease Risk Prediction project screenshot">
+      <div class="project-body">
+        <h3>Heart Disease Risk Prediction</h3>
+        <div class="project-tags"><span>Python</span><span>Machine Learning</span></div>
+        <p>A machine learning model that predicts a person's risk of heart disease from health indicators.</p>
+      </div>
+    </div>
+
+    <div class="project-card glass">
+      <img src="https://via.placeholder.com/440x300/1a1c3d/4fd6d0?text=Project+2" alt="Placeholder screenshot for second project">
+      <div class="project-body">
+        <h3>[Second Project Name]</h3>
+        <div class="project-tags"><span>[Tech 1]</span><span>[Tech 2]</span></div>
+        <p>[One or two lines about what this project does and the problem it solves.]</p>
+      </div>
+    </div>
+
+    <div class="project-card glass">
+      <img src="https://via.placeholder.com/440x300/1a1c3d/ff6fb0?text=Project+3" alt="Placeholder screenshot for third project">
+      <div class="project-body">
+        <h3>[Third Project Name]</h3>
+        <div class="project-tags"><span>[Tech 1]</span><span>[Tech 2]</span></div>
+        <p>[One or two lines about what this project does and the problem it solves.]</p>
+      </div>
+    </div>
+    <p class="placeholder-note">Replace the via.placeholder.com images with real screenshots uploaded to your repo, e.g. project2.png.</p>
+  </section>
+
+  <section class="reveal" id="contact">
+    <h2><span>Contact</span></h2>
+    <ul class="contact-list glass">
+      <li>Email — <a href="mailto:nandininandinigv@gmail.com">nandininandinigv@gmail.com</a></li>
+      <li>LinkedIn — <a href="https://www.linkedin.com/in/nandini-nandini-gv-201860367">nandini-nandini-gv</a></li>
+      <li>GitHub — <a href="https://github.com/nandininandinigv">nandininandinigv</a></li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>© 2026 Nandini G V</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  const chartFills = document.querySelectorAll('.chart-fill');
+  const chartObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.style.width = entry.target.dataset.width;
+        chartObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  chartFills.forEach(el => chartObserver.observe(el));
+</script>
+
 </body>
 </html>
+```
+
+Paste this over your repo's `index.html` — same file, same folder.
